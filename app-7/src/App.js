@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+import NewTask from './components/NewTask';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// The App component should be responsible for getting new tasks and storing the list of tasks.
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      input: '',
+      tasks: []
+    }
+
+    this.handleAddTask = this.handleAddTask.bind(this);
+  }
+
+  handleAddTask(task) {
+    this.setState({
+      tasks: [...this.state.tasks, task]
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <NewTask add={this.handleAddTask} />
+      </div>
+    );
+  }
 }
 
 export default App;
