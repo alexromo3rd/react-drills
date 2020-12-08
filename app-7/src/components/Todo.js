@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 // The Todo component should be responsible for displaying the individual tasks from the App component.
 class Todo extends Component {
-    render() {
+    render(props) {
         return(
-            <div>Todo List</div>
+            <p>{this.props.task}</p>
         )
     }
 }
